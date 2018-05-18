@@ -1,5 +1,5 @@
 {
-  "name"   : "VCG",
+  "name"   : "registration",
   "script" : "dist/server/index.js",
   "cron_restart" : "0 01 * * *"
 }

@@ -76,7 +76,7 @@ const commonConfig = merge([
   }),
   parts.clean(PATHS.build + '/*.js'),
   parts.clean(PATHS.build + '/*.map'),
-  parts.copy(PATHS.server + '/views/assets', PATHS.build + '/assets'),
+ // parts.copy(PATHS.server + '/views/assets', PATHS.build + '/assets'),
 ]);
 
 const productionConfig = merge([
