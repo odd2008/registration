@@ -6,7 +6,6 @@ build/
 coverage/
 .eslintcache
 npm-debug.log
-package-lock.json
 .idea/
 dist/
 .DS_Store
