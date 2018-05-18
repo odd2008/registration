@@ -1,0 +1,5 @@
+{
+  "name"   : "VCG",
+  "script" : "dist/server/index.js",
+  "cron_restart" : "0 01 * * *"
+}

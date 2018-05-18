@@ -1,0 +1,38 @@
+{
+  "presets": [
+    "env",
+    "react",
+    "stage-0"
+  ],
+  "plugins": [
+    "babel-plugin-syntax-class-properties",
+    "babel-plugin-transform-class-properties",
+    "babel-plugin-syntax-object-rest-spread",
+    "babel-plugin-transform-object-rest-spread",
+    "babel-plugin-transform-async-to-generator",
+
+    ["import-inspector", {
+      "serverSideRequirePath": true,
+      "webpackRequireWeakId" : true
+    }],
+
+    //"syntax-dynamic-import",
+    //"dynamic-import-webpack",
+    //"dynamic-import-node",
+
+    ["system-import-transformer", { "commonJS": { "useRequireEnsure": true} }],
+    "react-loadable/babel",
+
+    ["module-resolver", {
+      "root": ["./app"],
+      "alias": {
+        "actions": "./app/actions/"
+        ,"reducers": "./app/reducers/"
+        ,"routes" : "./app/routes"
+        ,"pages" : "./app/pages"
+        ,"components" : "./app/components"
+        ,"public" : "./server/public"
+      }
+    }]
+  ]
+}
