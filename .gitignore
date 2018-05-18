@@ -15,4 +15,3 @@ server/middleware/handleRender.js
 server/public/
 Test.js
 .env
-compile-build.sh
