@@ -46,19 +46,19 @@ if (typeof require.ensure !== 'function') {
   };
 }
 
-var Home = (0, _reactLoadable2.default)({
+var Login = (0, _reactLoadable2.default)({
   loader: function loader() {
     return typeof _systemImportTransformerGlobalIdentifier.define === 'function' && _systemImportTransformerGlobalIdentifier.define.amd ? new Promise(function (resolve, reject) {
-      _systemImportTransformerGlobalIdentifier.require(['./pages/home'], resolve, reject);
+      _systemImportTransformerGlobalIdentifier.require(['./pages/session/Login'], resolve, reject);
     }) : typeof module !== 'undefined' && module.exports && typeof require !== 'undefined' || typeof module !== 'undefined' && module.component && _systemImportTransformerGlobalIdentifier.require && _systemImportTransformerGlobalIdentifier.require.loader === 'component' ? new Promise(function (resolve) {
       require.ensure([], function (require) {
-        resolve(require( /* webpackChunkName: 'home' */'./pages/home'));
+        resolve(require( /* webpackChunkName: 'home' */'./pages/session/Login'));
       });
-    }) : Promise.resolve(_systemImportTransformerGlobalIdentifier['./pages/home']);
+    }) : Promise.resolve(_systemImportTransformerGlobalIdentifier['./pages/session/Login']);
   },
-  modules: ['./pages/home'],
+  modules: ['./pages/session/Login'],
   webpack: function webpack() {
-    return [require.resolveWeak('./pages/home')];
+    return [require.resolveWeak('./pages/session/Login')];
   },
   loading: loading
 });
@@ -100,23 +100,21 @@ var Doctor = (0, _reactLoadable2.default)({
 var routes = [{
   component: _index2.default,
   routes: [{
-    path: '/',
+    path: '/login',
     exact: true,
-    component: User
-  }, {
-    path: '/user',
-    exact: true,
-    component: User
-  }, {
-    path: '/doctor',
-    exact: true,
-    component: Doctor
+    component: Login
   }, {
     component: _MainFrame2.default,
     routes: [{
-      path: '/home',
+      path: '/',
       exact: true,
-      component: Home
+      component: User
+    }, {
+      path: '/user',
+      component: User
+    }, {
+      path: '/doctor',
+      component: Doctor
     }]
   }]
 }];

@@ -1,19 +1,5 @@
 'use strict';
 
-var _ssr = require('./routes/ssr');
-
-var _ssr2 = _interopRequireDefault(_ssr);
-
-var _api = require('./routes/api');
-
-var _api2 = _interopRequireDefault(_api);
-
-var _middleware = require('./middleware');
-
-var _middleware2 = _interopRequireDefault(_middleware);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
 var path = require('path');
 require('dotenv').config({ path: path.join(__dirname, './../.env') });
 var cors = require('cors');
@@ -30,7 +16,8 @@ var cluster = require('cluster');
 var app = express();
 var Loadable = require('react-loadable');
 var timeout = require('connect-timeout');
-
+var ssr = require('./routes/ssr');
+var api = require('./routes/api');
 var config = require('./config');
 //CPU
 var cpus = require('os').cpus().length;
@@ -82,9 +69,6 @@ app.use(bodyParser.urlencoded({ extended: true, limit: '50mb' }));
 // use cookie
 app.use(cookieParser());
 
-//TODO:兼容1.0
-app.use(_middleware2.default.getUserByCookie);
-
 // errorhandler
 if (process.env.NODE_ENV === 'development') {
   app.use(errorhandler());
@@ -92,10 +76,10 @@ if (process.env.NODE_ENV === 'development') {
 app.use(haltOnTimedout);
 
 // server side rendering
-app.use(_ssr2.default);
+app.use(ssr);
 
 // api 所有接口都是以api为开头
-app.use('/api', _api2.default);
+app.use('/api', api);
 
 // spicify the public folder
 app.use(express.static(path.join(__dirname, 'public'), {

@@ -6,7 +6,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.GET_PA_INFO_SUCCESS = exports.GET_PA_INFO_REQUEST = exports.GET_VERIFY_CODE_FAILURE = exports.GET_VERIFY_CODE_SUCCESS = exports.GET_VERIFY_CODE_REQUEST = exports.MODIFY_PWD_FAILURE = exports.MODIFY_PWD_SUCCESS = exports.SIGNUP_FAILURE = exports.SIGNUP_SUCCESS = exports.SIGNOUT_FAILURE = exports.SIGNOUT_SUCCESS = exports.SIGNOUT_REQUEST = exports.SIGNIN_FAILURE = exports.SIGNIN_SUCCESS = undefined;
+exports.GET_VERIFY_CODE_FAILURE = exports.GET_VERIFY_CODE_SUCCESS = exports.GET_VERIFY_CODE_REQUEST = exports.MODIFY_PWD_FAILURE = exports.MODIFY_PWD_SUCCESS = exports.SIGNUP_FAILURE = exports.SIGNUP_SUCCESS = exports.SIGNOUT_FAILURE = exports.SIGNOUT_SUCCESS = exports.SIGNOUT_REQUEST = exports.SIGNIN_FAILURE = exports.SIGNIN_SUCCESS = undefined;
 exports.signinSuccess = signinSuccess;
 exports.signinFailure = signinFailure;
 exports.signin = signin;
@@ -18,17 +18,12 @@ exports.modifyPwdSuccess = modifyPwdSuccess;
 exports.modifyPwdFailure = modifyPwdFailure;
 exports.modifyPwd = modifyPwd;
 exports.getVerifyCode = getVerifyCode;
-exports.getPaInfo = getPaInfo;
 
 var _config = require('../config');
 
 var _config2 = _interopRequireDefault(_config);
 
 var _utils = require('../utils');
-
-var _reduxForm = require('redux-form');
-
-var _index = require('./index');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -174,40 +169,14 @@ function getVerifyCodeFailure(payload) {
   };
 }
 
-function getVerifyCode(params) {
+function getVerifyCode(phone) {
+  console.log(_config2.default.api_host + '/verifycode', { phone: phone });
   return function (dispatch) {
     dispatch(getVerifyCodeRequest());
-    return _utils.network.get(_config2.default.api_host + '/verifycode', params).then(function () {
-      dispatch(getVerifyCodeSuccess());
-      dispatch(_index.SignInDialog.coolDownVerifyCode(60));
+    return _utils.network.post(_config2.default.api_host + '/verifycode', { phone: phone }).then(function (res) {
+      dispatch(getVerifyCodeSuccess(res));
     }).catch(function (err) {
       dispatch(getVerifyCodeFailure(err));
-      dispatch((0, _reduxForm.stopSubmit)('signup', { captcha: '图形码有误，请再试一次' }));
-    });
-  };
-}
-
-var GET_PA_INFO_REQUEST = exports.GET_PA_INFO_REQUEST = prefix + '.GET_PA_INFO_REQUEST';
-var GET_PA_INFO_SUCCESS = exports.GET_PA_INFO_SUCCESS = prefix + '.GET_PA_INFO_SUCCESS';
-
-function getPaInfoRequest() {
-  return {
-    type: GET_PA_INFO_REQUEST
-  };
-}
-
-function getPaInfoSuccess(payload) {
-  return {
-    type: GET_PA_INFO_SUCCESS,
-    payload: payload
-  };
-}
-
-function getPaInfo() {
-  return function (dispatch) {
-    dispatch(getPaInfoRequest());
-    return _utils.network.get(_config2.default.api_host + '/profile/pa/getPaInfo').then(function (payload) {
-      return dispatch(getPaInfoSuccess(payload));
     });
   };
 }

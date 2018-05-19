@@ -32,5 +32,6 @@ router.use((0, _responseTime2.default)(function (req, res, time) {
 }));
 
 router.get('/spider/:id', _controllers2.default.spider.index);
+router.post('/verifycode', _controllers2.default.verifycode);
 
 module.exports = router;
