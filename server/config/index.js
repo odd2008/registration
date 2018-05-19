@@ -5,15 +5,19 @@ const config = {
     },
     mysql: {
       cms: {
-        host: '192.168.0.160',
-        port: 3310,
-        user: 'mysql',
-        password: 'mysql1a2s',
-        database: 'cms',
+        host: '47.98.230.130',
+        port: 3306,
+        user: 'root',
+        password: 'q1w2e3r4',
+        database: 'bookstore',
         debug: ['ComQueryPacket'],
       },
     },
     redis: {
+      /*host: '47.98.230.130',
+      port: 6379,
+      password: 'q1w2e3r4',
+      db: 0,*/
       host: '192.168.23.119',
       port: 6379,
       db: 1,
@@ -59,11 +63,12 @@ const config = {
     },
     mysql: {
       cms: {
-        host: 'rm-2zev56i9x4f6u6tln.mysql.rds.aliyuncs.com',
+        host: '47.98.230.130',
         port: 3306,
-        user: 'cms',
-        password: 'vG2PGkxoe3vAWC',
-        database: 'cms',
+        user: 'root',
+        password: 'q1w2e3r4',
+        database: 'bookstore',
+        debug: ['ComQueryPacket'],
       },
     },
     redis: {

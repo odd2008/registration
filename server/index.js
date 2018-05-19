@@ -1,4 +1,5 @@
 const path = require('path');
+require('dotenv').config({path : path.join(__dirname,'./../.env')});
 const cors = require('cors');
 const helmet = require('helmet');
 const morgan = require('morgan');
@@ -16,9 +17,6 @@ const timeout = require('connect-timeout');
 const ssr = require('./routes/ssr');
 const api = require('./routes/api');
 const config = require('./config');
-
-require('dotenv').config({path : path.join(__dirname,'./../.env')});
-
 //CPU
 const cpus = require('os').cpus().length;
 
