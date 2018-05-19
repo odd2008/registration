@@ -521,12 +521,18 @@
       "publicPath": "/client.da3a4283.bundle.js"
     }
   ],
-  "./withStyles": [
+  "../styles/withStyles": [
     {
       "id": "3XyW",
       "name": "./node_modules/@material-ui/core/styles/withStyles.js",
       "file": "client.da3a4283.bundle.js",
       "publicPath": "/client.da3a4283.bundle.js"
+    },
+    {
+      "id": "3rUI",
+      "name": "./node_modules/material-ui/styles/withStyles.js",
+      "file": "vendor.12962961.bundle.js",
+      "publicPath": "/vendor.12962961.bundle.js"
     }
   ],
   "./_wks-define": [
@@ -1987,6 +1993,12 @@
       "name": "./node_modules/@material-ui/core/colors/red.js",
       "file": "client.da3a4283.bundle.js",
       "publicPath": "/client.da3a4283.bundle.js"
+    },
+    {
+      "id": "VhVK",
+      "name": "./node_modules/material-ui/colors/red.js",
+      "file": "vendor.12962961.bundle.js",
+      "publicPath": "/vendor.12962961.bundle.js"
     }
   ],
   "./modules/es6.string.fixed": [
@@ -3235,6 +3247,12 @@
       "name": "./node_modules/@material-ui/core/colors/pink.js",
       "file": "client.da3a4283.bundle.js",
       "publicPath": "/client.da3a4283.bundle.js"
+    },
+    {
+      "id": "jDmL",
+      "name": "./node_modules/material-ui/colors/pink.js",
+      "file": "vendor.12962961.bundle.js",
+      "publicPath": "/vendor.12962961.bundle.js"
     }
   ],
   "./_setCacheAdd.js": [
@@ -3591,6 +3609,12 @@
       "name": "./node_modules/@material-ui/core/colors/indigo.js",
       "file": "client.da3a4283.bundle.js",
       "publicPath": "/client.da3a4283.bundle.js"
+    },
+    {
+      "id": "UOC6",
+      "name": "./node_modules/material-ui/colors/indigo.js",
+      "file": "vendor.12962961.bundle.js",
+      "publicPath": "/vendor.12962961.bundle.js"
     }
   ],
   "./modules/es6.number.is-integer": [
@@ -6361,7 +6385,7 @@
       "publicPath": "/client.da3a4283.bundle.js"
     }
   ],
-  "../styles/transitions": [
+  "./transitions": [
     {
       "id": "z+QM",
       "name": "./node_modules/@material-ui/core/styles/transitions.js",
@@ -6369,8 +6393,8 @@
       "publicPath": "/client.da3a4283.bundle.js"
     },
     {
-      "id": "CMPy",
-      "name": "./node_modules/material-ui/styles/transitions.js",
+      "id": "aYnh",
+      "name": "./node_modules/material-ui/transitions/index.js",
       "file": "vendor.12962961.bundle.js",
       "publicPath": "/vendor.12962961.bundle.js"
     }
@@ -6967,6 +6991,12 @@
     {
       "id": "Een0",
       "name": "./node_modules/react-router/es/matchPath.js",
+      "file": "lib.ffce13d8.bundle.js",
+      "publicPath": "/lib.ffce13d8.bundle.js"
+    },
+    {
+      "id": "idIk",
+      "name": "./node_modules/react-router/matchPath.js",
       "file": "lib.ffce13d8.bundle.js",
       "publicPath": "/lib.ffce13d8.bundle.js"
     },
@@ -7737,14 +7767,6 @@
     {
       "id": "zFGm",
       "name": "./node_modules/history/DOMUtils.js",
-      "file": "lib.ffce13d8.bundle.js",
-      "publicPath": "/lib.ffce13d8.bundle.js"
-    }
-  ],
-  "react-router/matchPath": [
-    {
-      "id": "idIk",
-      "name": "./node_modules/react-router/matchPath.js",
       "file": "lib.ffce13d8.bundle.js",
       "publicPath": "/lib.ffce13d8.bundle.js"
     }
@@ -8607,14 +8629,6 @@
       "publicPath": "/vendor.12962961.bundle.js"
     }
   ],
-  "./transitions": [
-    {
-      "id": "aYnh",
-      "name": "./node_modules/material-ui/transitions/index.js",
-      "file": "vendor.12962961.bundle.js",
-      "publicPath": "/vendor.12962961.bundle.js"
-    }
-  ],
   "./utils/withWidth": [
     {
       "id": "/U7w",
@@ -8799,6 +8813,14 @@
       "publicPath": "/vendor.12962961.bundle.js"
     }
   ],
+  "../styles/transitions": [
+    {
+      "id": "CMPy",
+      "name": "./node_modules/material-ui/styles/transitions.js",
+      "file": "vendor.12962961.bundle.js",
+      "publicPath": "/vendor.12962961.bundle.js"
+    }
+  ],
   "../core-js/object/keys": [
     {
       "id": "qO4g",
@@ -8847,34 +8869,10 @@
       "publicPath": "/vendor.12962961.bundle.js"
     }
   ],
-  "./indigo": [
-    {
-      "id": "UOC6",
-      "name": "./node_modules/material-ui/colors/indigo.js",
-      "file": "vendor.12962961.bundle.js",
-      "publicPath": "/vendor.12962961.bundle.js"
-    }
-  ],
-  "./pink": [
-    {
-      "id": "jDmL",
-      "name": "./node_modules/material-ui/colors/pink.js",
-      "file": "vendor.12962961.bundle.js",
-      "publicPath": "/vendor.12962961.bundle.js"
-    }
-  ],
   "./grey": [
     {
       "id": "RZKI",
       "name": "./node_modules/material-ui/colors/grey.js",
-      "file": "vendor.12962961.bundle.js",
-      "publicPath": "/vendor.12962961.bundle.js"
-    }
-  ],
-  "./red": [
-    {
-      "id": "VhVK",
-      "name": "./node_modules/material-ui/colors/red.js",
       "file": "vendor.12962961.bundle.js",
       "publicPath": "/vendor.12962961.bundle.js"
     }
@@ -9171,7 +9169,7 @@
       "publicPath": "/vendor.12962961.bundle.js"
     }
   ],
-  "../../modules/es6.string.iterator": [
+  "../modules/es6.string.iterator": [
     {
       "id": "zQR9",
       "name": "./node_modules/core-js/library/modules/es6.string.iterator.js",
@@ -9179,7 +9177,7 @@
       "publicPath": "/vendor.12962961.bundle.js"
     }
   ],
-  "../../modules/web.dom.iterable": [
+  "../modules/web.dom.iterable": [
     {
       "id": "+tPU",
       "name": "./node_modules/core-js/library/modules/web.dom.iterable.js",
@@ -9539,14 +9537,6 @@
       "publicPath": "/vendor.12962961.bundle.js"
     }
   ],
-  "../styles/withStyles": [
-    {
-      "id": "3rUI",
-      "name": "./node_modules/material-ui/styles/withStyles.js",
-      "file": "vendor.12962961.bundle.js",
-      "publicPath": "/vendor.12962961.bundle.js"
-    }
-  ],
   "@babel/runtime/helpers/interopRequireWildcard": [
     {
       "id": "IfHf",
@@ -9707,7 +9697,7 @@
       "publicPath": "/vendor.12962961.bundle.js"
     }
   ],
-  "./utils/toCssValue": [
+  "../utils/toCssValue": [
     {
       "id": "uqEv",
       "name": "./node_modules/jss/lib/utils/toCssValue.js",
@@ -9763,7 +9753,7 @@
       "publicPath": "/vendor.12962961.bundle.js"
     }
   ],
-  "./StyleSheet": [
+  "../StyleSheet": [
     {
       "id": "a5Uz",
       "name": "./node_modules/jss/lib/StyleSheet.js",
@@ -10451,7 +10441,7 @@
       "publicPath": "/vendor.12962961.bundle.js"
     }
   ],
-  "./blue": [
+  "material-ui/colors/blue": [
     {
       "id": "KGR4",
       "name": "./node_modules/material-ui/colors/blue.js",
