@@ -7,7 +7,6 @@ coverage/
 .eslintcache
 npm-debug.log
 .idea/
-dist/
 .DS_Store
 
 server/middleware/handleRender.js

@@ -6,7 +6,7 @@
   "scripts": {
     "build-app": "babel app -d dist/app --presets env,react,stage-0",
     "build-server": "babel server -d dist/server --copy-files --presets env,react,stage-0",
-    "client-dep": "webpack -p --progress --colors",
+    "client-dep": "webpack -p --progress --colors --env=production",
     "serve": "pm2-runtime start pm2.json",
     "start-dev": "nodemon server --watch app --exec babel-node",
     "client-dev": "webpack -w --progress --colors",
