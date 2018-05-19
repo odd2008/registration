@@ -38,22 +38,41 @@ const styles = theme => ({
 class Login extends React.Component {
 
   state = {
-    phone: '18510381039',
+    phone: '',
+    second: 0,
   };
 
   handleChange = event => {
-    this.setState({
-      phone: event.target.value,
-    });
+
+    let phone = event.target.value;
+    phone = phone.replace(/\D+/g, '');
+    phone.charAt(0) != 1 && (phone = '');
+    phone.length > 11 && (phone = phone.substring(0, 11));
+
+    this.setState({phone});
   };
 
   handleVerifyCode = () => {
+
     this.props.getVerifyCode(this.state.phone);
+
+    let second = 60;
+    const interval = setInterval(() => {
+      second--;
+      this.setState({second});
+      if (second == 0) clearInterval(interval);
+    }, 1000);
+
   };
 
   render() {
 
     const {classes} = this.props;
+
+    const {
+      phone,
+      second,
+    } = this.state;
 
     return (
       <div className={classes.root}>
@@ -62,7 +81,7 @@ class Login extends React.Component {
           id="phone"
           label="phone"
           className={classes.textField}
-          value={this.state.phone}
+          value={phone}
           onChange={this.handleChange}
           margin="normal"
         />
@@ -70,10 +89,11 @@ class Login extends React.Component {
         <Button
           variant="raised"
           color="primary"
+          disabled={second > 0}
           className={classes.button}
           onClick={this.handleVerifyCode}
         >
-          获取验证码
+          {second > 0 ? second : '获取验证码'}
         </Button>
 
       </div>
