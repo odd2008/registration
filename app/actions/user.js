@@ -6,10 +6,6 @@
 import config from 'config';
 import {network} from 'utils';
 
-import {stopSubmit} from 'redux-form';
-
-import {SignInDialog as SignInDialogActions} from 'actions';
-
 const prefix = 'USER';
 
 /**
@@ -150,42 +146,16 @@ function getVerifyCodeFailure(payload) {
   };
 }
 
-export function getVerifyCode(params) {
+export function getVerifyCode(phone) {
+  console.log(`${config.api_host}/verifycode`, {phone});
   return dispatch => {
     dispatch(getVerifyCodeRequest());
-    return network.get(`${config.api_host}/verifycode`, params)
-      .then(() => {
-        dispatch(getVerifyCodeSuccess());
-        dispatch(SignInDialogActions.coolDownVerifyCode(60));
+    return network.post(`${config.api_host}/verifycode`, {phone})
+      .then(res => {
+        dispatch(getVerifyCodeSuccess(res));
       })
       .catch(err => {
         dispatch(getVerifyCodeFailure(err));
-        dispatch(stopSubmit('signup', {captcha: '图形码有误，请再试一次'}));
       });
-  };
-}
-
-export const GET_PA_INFO_REQUEST = `${prefix}.GET_PA_INFO_REQUEST`;
-export const GET_PA_INFO_SUCCESS = `${prefix}.GET_PA_INFO_SUCCESS`;
-
-function getPaInfoRequest() {
-  return {
-    type: GET_PA_INFO_REQUEST,
-  };
-}
-
-function getPaInfoSuccess(payload) {
-  return {
-    type: GET_PA_INFO_SUCCESS,
-    payload,
-  };
-}
-
-export function getPaInfo() {
-  return dispatch => {
-    dispatch(getPaInfoRequest());
-    return network
-      .get(`${config.api_host}/profile/pa/getPaInfo`)
-      .then(payload => dispatch(getPaInfoSuccess(payload)));
   };
 }

@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/peter-song/registration#readme",
   "dependencies": {
+    "@alicloud/sms-sdk": "^1.1.1",
     "@material-ui/core": "^1.0.0-rc.0",
     "@material-ui/icons": "^1.0.0-beta.42",
     "ali-mns": "^2.6.0",

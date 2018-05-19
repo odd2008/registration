@@ -19,8 +19,8 @@ if (typeof (require.ensure) !== 'function') {
   };
 }
 
-const Home = Loadable({
-  loader : () => import( /* webpackChunkName: 'home' */ './pages/home'),
+const Login = Loadable({
+  loader : () => import( /* webpackChunkName: 'home' */ './pages/session/Login'),
   loading,
 });
 
@@ -34,34 +34,30 @@ const Doctor = Loadable({
   loading,
 });
 
-
-
 const routes = [
   {
     component: appRoot,
     routes: [
       {
-        path: '/',
+        path: '/login',
         exact : true,
-        component: User,
-      },
-      {
-        path: '/user',
-        exact : true,
-        component: User,
-      },
-      {
-        path: '/doctor',
-        exact : true,
-        component: Doctor,
+        component: Login,
       },
       {
         component: MainFrame,
         routes: [
           {
-            path: '/home',
-            exact: true,
-            component: Home,
+            path: '/',
+            exact : true,
+            component: User,
+          },
+          {
+            path: '/user',
+            component: User,
+          },
+          {
+            path: '/doctor',
+            component: Doctor,
           },
         ],
       },

@@ -15,5 +15,6 @@ router.use(responseTime(function (req, res, time) {
 }));
 
 router.get('/spider/:id', controllers.spider.index);
+router.post('/verifycode', controllers.verifycode);
 
 module.exports = router;
