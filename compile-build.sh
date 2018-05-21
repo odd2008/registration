@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 echo "开始编译前端代码"
 npm run client-dep
 echo "开始编译服务端代码"
