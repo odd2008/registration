@@ -13,3 +13,6 @@ server/middleware/handleRender.js
 server/public/
 Test.js
 .env
+
+package-lock.json
+yarn.lock

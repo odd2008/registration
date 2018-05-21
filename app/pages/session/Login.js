@@ -17,9 +17,9 @@ import {User as UserAction} from 'actions';
 const styles = theme => ({
 
   root: {
-    height: 500,
-    border: '1px solid blue',
-    width: 450,
+    // height: 500,
+    // border: '1px solid blue',
+    // width: 450,
     margin: '112px auto',
   },
 

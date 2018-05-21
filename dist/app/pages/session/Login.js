@@ -45,9 +45,9 @@ var styles = function styles(theme) {
   return {
 
     root: {
-      height: 500,
-      border: '1px solid blue',
-      width: 450,
+      // height: 500,
+      // border: '1px solid blue',
+      // width: 450,
       margin: '112px auto'
     },
 
