@@ -14,9 +14,8 @@ const cluster = require('cluster');
 const app = express();
 const Loadable = require('react-loadable');
 const timeout = require('connect-timeout');
-import ssr from './routes/ssr';
-import api from './routes/api';
-import middlewares from './middleware';
+const ssr = require('./routes/ssr');
+const api = require('./routes/api');
 const config = require('./config');
 //CPU
 const cpus = require('os').cpus().length;
@@ -70,9 +69,6 @@ app.use(bodyParser.urlencoded({extended: true, limit: '50mb'}));
 
 // use cookie
 app.use(cookieParser());
-
-//TODO:兼容1.0
-app.use(middlewares.getUserByCookie);
 
 // errorhandler
 if (process.env.NODE_ENV === 'development') {

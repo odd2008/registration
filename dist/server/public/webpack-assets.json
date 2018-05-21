@@ -1,0 +1,11 @@
+{
+  "client": {
+    "js": "client.3a8a87f0.bundle.js"
+  },
+  "lib": {
+    "js": "lib.ffce13d8.bundle.js"
+  },
+  "vendor": {
+    "js": "vendor.12cee247.bundle.js"
+  }
+}

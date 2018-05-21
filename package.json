@@ -6,7 +6,7 @@
   "scripts": {
     "build-app": "babel app -d dist/app --presets env,react,stage-0",
     "build-server": "babel server -d dist/server --copy-files --presets env,react,stage-0",
-    "client-dep": "webpack -p --progress --colors",
+    "client-dep": "webpack -p --progress --colors --env=production",
     "serve": "pm2-runtime start pm2.json",
     "start-dev": "nodemon server --watch app --exec babel-node",
     "client-dev": "webpack -w --progress --colors",
@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/peter-song/registration#readme",
   "dependencies": {
+    "@alicloud/sms-sdk": "^1.1.1",
     "@material-ui/core": "^1.0.0-rc.0",
     "@material-ui/icons": "^1.0.0-beta.42",
     "ali-mns": "^2.6.0",

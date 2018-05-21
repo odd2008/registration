@@ -3,21 +3,20 @@
  * author by LXG
  */
 const conf = require('../config');
-import Redis from 'ioredis';
+const Redis = require('ioredis');
 
 const redis = new Redis({
+
   ...conf.redis,
-  retryStrategy: function (times) {
-    var delay = Math.min(times * 50, 2000);
-    return delay;
-  },
-  reconnectOnError: function (err) {
-    var targetError = 'READONLY';
-    if (err.message.slice(0, targetError.length) === targetError) {
-      // Only reconnect when the error starts with "READONLY"
+
+  retryStrategy: times => Math.min(times * 50, 2000),
+
+  reconnectOnError: err => {
+    if (err.message.slice(0, targetError.length) === 'READONLY') {
       return true; // or `return 1;`
     }
   },
+
 });
 
 
