@@ -1,11 +1,11 @@
 {
   "client": {
-    "js": "client.c1ffc991.bundle.js"
+    "js": "client.96764716.bundle.js"
   },
   "lib": {
-    "js": "lib.088b45ee.bundle.js"
+    "js": "lib.ffce13d8.bundle.js"
   },
   "vendor": {
-    "js": "vendor.eef3c0fb.bundle.js"
+    "js": "vendor.e9db5742.bundle.js"
   }
 }
