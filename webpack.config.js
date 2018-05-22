@@ -137,10 +137,10 @@ const developmentConfig = merge([
     },
   },
   parts.generateSourceMaps({type: 'cheap-module-eval-source-map'}),
-  parts.devServer({
-    host: 'dev.vcg.com',//process.env.HOST,
+  /*parts.devServer({
+    host: 'localhost',//process.env.HOST,
     port: process.env.PORT,
-  }),
+  }),*/
   parts.loadCSS(),
   parts.loadImages(),
   parts.extractBundles([

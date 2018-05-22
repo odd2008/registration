@@ -10,7 +10,7 @@ import Typography from '@material-ui/core/Typography';
 
 const styles = () => ({
 
-  root: {
+  _root: {
     textAlign: 'center',
   },
 
@@ -23,9 +23,9 @@ class Home extends React.Component {
     const {classes} = this.props;
 
     return (
-      <div className={classes.root}>
+      <div className={classes._root}>
         <Typography noWrap>
-          {'Welcome come to user list!'}
+          {'Welcome come to user list !!!'}
         </Typography>
       </div>
     );

@@ -9,7 +9,7 @@ const config = {
         port: 3306,
         user: 'root',
         password: 'q1w2e3r4',
-        database: 'bookstore',
+        database: 'registration',
         debug: ['ComQueryPacket'],
       },
     },

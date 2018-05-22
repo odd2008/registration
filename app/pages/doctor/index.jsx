@@ -7,11 +7,16 @@ import {withRouter} from 'react-router-dom';
 
 import {withStyles} from 'material-ui/styles';
 import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
 
-const styles = () => ({
+const styles = theme => ({
 
   root: {
-    textAlign: 'center',
+    // textAlign: 'center',
+  },
+
+  button: {
+    margin: theme.spacing.unit,
   },
 
 });
@@ -20,10 +25,20 @@ class Home extends React.Component {
 
   render() {
 
-    const {classes} = this.props;
+    const {classes, history} = this.props;
 
     return (
       <div className={classes.root}>
+
+        <Button
+          variant="raised"
+          color="primary"
+          className={classes.button}
+          onClick={() => history.push('/doctor/add')}
+        >
+          添加医生
+        </Button>
+
         <Typography noWrap>
           {'Welcome come to doctor list!'}
         </Typography>
@@ -35,6 +50,7 @@ class Home extends React.Component {
 Home.propTypes = {
   //style
   classes: PropTypes.object.isRequired,
+  history: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = () => ({});

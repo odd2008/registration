@@ -34,6 +34,11 @@ const Doctor = Loadable({
   loading,
 });
 
+const AddDoctor = Loadable({
+  loader : () => import( /* webpackChunkName: 'home' */ './pages/doctor/add'),
+  loading,
+});
+
 const routes = [
   {
     component: appRoot,
@@ -57,7 +62,12 @@ const routes = [
           },
           {
             path: '/doctor',
+            exact : true,
             component: Doctor,
+          },
+          {
+            path: '/doctor/add',
+            component: AddDoctor,
           },
         ],
       },

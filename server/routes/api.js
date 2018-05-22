@@ -16,5 +16,7 @@ router.use(responseTime(function (req, res, time) {
 
 router.get('/spider/:id', controllers.spider.index);
 router.post('/verifycode', controllers.verifycode);
+router.post('/addDoctor', controllers.doctor.addDoctor);
+router.post('/getDoctors', controllers.doctor.getDoctors);
 
 module.exports = router;

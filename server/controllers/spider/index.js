@@ -28,7 +28,11 @@ module.exports = (req, res, next) => {
         chunks.push(chunk);
       });
 
+      console.log(chunks.length);
+
       resp.on('end', function () {
+        // console.log('end');
+
         //由于咱们发现此网页的编码格式为gb2312，所以需要对其进行转码，否则乱码
         const html = iconv.decode(Buffer.concat(chunks), 'utf-8');
         // console.log(html);
@@ -58,7 +62,7 @@ module.exports = (req, res, next) => {
           const test = $(element).text().trim();
           test && desc.push(test);
         });
-        summary.desc = desc;
+        summary.introduction = desc;
 
         // 出诊信息
         let visitsInfo = {};
@@ -81,7 +85,11 @@ module.exports = (req, res, next) => {
 
         summary.visitsInfo = visitsInfo;
 
-        res.json(summary);
+        res.json({
+          code: '200',
+          massage: '获取成功',
+          data: summary
+        });
 
       });
 
