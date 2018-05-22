@@ -33,5 +33,7 @@ router.use((0, _responseTime2.default)(function (req, res, time) {
 
 router.get('/spider/:id', _controllers2.default.spider.index);
 router.post('/verifycode', _controllers2.default.verifycode);
+router.post('/addDoctor', _controllers2.default.doctor.addDoctor);
+router.post('/getDoctors', _controllers2.default.doctor.getDoctors);
 
 module.exports = router;

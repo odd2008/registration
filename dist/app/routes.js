@@ -97,6 +97,23 @@ var Doctor = (0, _reactLoadable2.default)({
   loading: loading
 });
 
+var AddDoctor = (0, _reactLoadable2.default)({
+  loader: function loader() {
+    return typeof _systemImportTransformerGlobalIdentifier.define === 'function' && _systemImportTransformerGlobalIdentifier.define.amd ? new Promise(function (resolve, reject) {
+      _systemImportTransformerGlobalIdentifier.require(['./pages/doctor/add'], resolve, reject);
+    }) : typeof module !== 'undefined' && module.exports && typeof require !== 'undefined' || typeof module !== 'undefined' && module.component && _systemImportTransformerGlobalIdentifier.require && _systemImportTransformerGlobalIdentifier.require.loader === 'component' ? new Promise(function (resolve) {
+      require.ensure([], function (require) {
+        resolve(require( /* webpackChunkName: 'home' */'./pages/doctor/add'));
+      });
+    }) : Promise.resolve(_systemImportTransformerGlobalIdentifier['./pages/doctor/add']);
+  },
+  modules: ['./pages/doctor/add'],
+  webpack: function webpack() {
+    return [require.resolveWeak('./pages/doctor/add')];
+  },
+  loading: loading
+});
+
 var routes = [{
   component: _index2.default,
   routes: [{
@@ -114,7 +131,11 @@ var routes = [{
       component: User
     }, {
       path: '/doctor',
+      exact: true,
       component: Doctor
+    }, {
+      path: '/doctor/add',
+      component: AddDoctor
     }]
   }]
 }];

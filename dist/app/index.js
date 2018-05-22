@@ -28,8 +28,84 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 var styles = function styles(theme) {
+  var unit = theme.spacing.unit;
+
+
   return {
+
+    '@global': {
+
+      html: {
+        background: '#fafafa',
+        WebkitFontSmoothing: 'antialiased', // Antialiasing.
+        MozOsxFontSmoothing: 'grayscale', // Antialiasing.
+        boxSizing: 'border-box'
+      },
+
+      '*, *:before, *:after': {
+        boxSizing: 'inherit'
+      },
+
+      a: {
+        textDecoration: 'none'
+      },
+
+      'html,body,#root': {
+        height: '100%',
+        minHeight: '100%',
+        margin: 0,
+        padding: 0,
+        fontFamily: '"Helvetica Neue For Number", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif;'
+      },
+
+      '#root': _defineProperty({
+        paddingRight: unit * 4
+      }, theme.breakpoints.down('xs'), {
+        paddingRight: 0
+      }),
+
+      '.maxContent': {
+        maxWidth: 1200,
+        margin: '0 auto',
+        width: '100%',
+        padding: unit
+      },
+
+      '.flex': {
+        display: 'flex'
+      },
+
+      '.flexCenter': {
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center'
+      },
+
+      '.flexVerticalCenter': {
+        display: 'flex',
+        alignItems: 'center'
+      },
+
+      '.flexHorizontalCenter': {
+        display: 'flex',
+        justifyContent: 'center'
+      },
+
+      '.progress': {
+        textAlign: 'center',
+        height: unit * 80,
+        lineHeight: unit * 80 + 'px'
+      },
+
+      '.noData': {
+        textAlign: 'center',
+        padding: unit * 20
+      }
+
+    },
 
     root: {
       flexGrow: 1,
