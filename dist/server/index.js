@@ -81,6 +81,10 @@ app.use(ssr);
 // api 所有接口都是以api为开头
 app.use('/api', api);
 
+app.get('/MP_verify_sLRBKMI2XAcvShdG.txt', function (req, res) {
+  res.sendFile(__dirname + "/" + "MP_verify_sLRBKMI2XAcvShdG.txt");
+});
+
 // spicify the public folder
 app.use(express.static(path.join(__dirname, 'public'), {
   options: {
