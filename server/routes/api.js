@@ -18,5 +18,6 @@ router.get('/spider/:id', controllers.spider.index);
 router.post('/verifycode', controllers.verifycode);
 router.post('/addDoctor', controllers.doctor.addDoctor);
 router.post('/getDoctors', controllers.doctor.getDoctors);
+router.post('/wx/getConfig', controllers.weixin.index);
 
 module.exports = router;
