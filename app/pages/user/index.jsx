@@ -23,9 +23,11 @@ const styles = () => ({
 class Home extends React.Component {
 
   componentDidMount() {
+
     network
       .get(`${config.api_host}/wx/getConfig`, {url: global.location.href})
       .then(data => {
+
         global.wx.config({
           debug: true,////生产环境需要关闭debug模式
           appId: data.appId,//appId通过微信服务号后台查看
@@ -38,22 +40,26 @@ class Home extends React.Component {
           ],
         });
 
-        global.wx.error(function(res){
-          // config信息验证失败会执行error函数，如签名过期导致验证失败，具体错误信息可以打开config的debug模式查看，也可以在返回的res参数中查看，对于SPA可以在这里更新签名。
-          console.log(res);
+        global.wx.ready(() => {
+
+          global.wx.onMenuShareAppMessage({
+            title: '用户管理', // 分享标题
+            desc: '测试用户管理分享', // 分享描述
+            link: global.location.href, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+            imgUrl: 'https://www.easyicon.net/api/resizeApi.php?id=556260&size=128', // 分享图标
+            type: '', // 分享类型,music、video或link，不填默认为link
+            dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+            success: function () {
+              console.log('// 用户点击了分享后执行的回调函数 user ');
+            },
+          });
+
+          global.wx.error(res => {
+            console.log(res);
+          });
+
         });
 
-        global.wx.onMenuShareAppMessage({
-          title: '用户管理', // 分享标题
-          desc: '测试用户管理分享', // 分享描述
-          link: global.location.href, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
-          imgUrl: 'https://www.easyicon.net/api/resizeApi.php?id=556260&size=128', // 分享图标
-          type: '', // 分享类型,music、video或link，不填默认为link
-          dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
-          success: function () {
-            console.log('// 用户点击了分享后执行的回调函数 user ');
-          },
-        });
       })
       .catch(err => console.log(err));
   }

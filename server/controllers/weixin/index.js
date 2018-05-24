@@ -4,7 +4,6 @@
 import {network} from 'utils';
 import uuid from 'uuid/v4';
 import sha1 from 'sha1';
-import qs from 'qs';
 
 const GET_ACCESS_TOKEN_URL = 'https://api.weixin.qq.com/cgi-bin/token';
 const GET_TICKET_URL = 'https://api.weixin.qq.com/cgi-bin/ticket/getticket';
@@ -22,25 +21,27 @@ module.exports = (req, res, next) => {
     appId: 'wxda5c90f99a790e95',
   };
 
-  const query = {
+  const token_query = {
     grant_type: 'client_credential',
     appid: 'wxda5c90f99a790e95',
     secret: 'd5d45e96ae56407b450205db08d7c5d5',
   };
 
+  const ticker_query = {type: 'jsapi'};
+
   network
-    .get(GET_ACCESS_TOKEN_URL, query)
-    .then(tokenObj => network.get(GET_TICKET_URL, {type: 'jsapi', access_token: tokenObj.access_token}))
+    .get(GET_ACCESS_TOKEN_URL, token_query)
+    .then(tokenObj => network.get(GET_TICKET_URL, {...ticker_query, access_token: tokenObj.access_token}))
     .then(ticketObj => {
 
       const config = {
-        jsapi_ticket: ticketObj,
+        jsapi_ticket: ticketObj.ticket,
         noncestr,
         timestamp,
         url,
       };
 
-      data.signature = sha1(qs.stringify(config));
+      data.signature = sha1(`jsapi_ticket=${config.jsapi_ticket}&noncestr=${config.noncestr}&timestamp=${config.timestamp}&url=${config.url}`);
       res.json(data);
     })
     .catch(err => next(err));
