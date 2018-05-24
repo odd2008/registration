@@ -5,6 +5,9 @@ import PropTypes from 'prop-types';
 import {withRouter} from 'react-router-dom';
 import {renderRoutes} from 'react-router-config';
 
+// import wx from 'weixin-js-sdk';
+import {network} from 'utils';
+
 import {withStyles} from '@material-ui/core/styles';
 
 const styles = theme => {
@@ -108,6 +111,25 @@ const styles = theme => {
 
 
 class AppRoot extends React.Component {
+
+  componentDidMount() {
+    this.getAccessToken();
+  }
+
+  getAccessToken() {
+    const url = 'https://api.weixin.qq.com/cgi-bin/token';
+    const query = {
+      grant_type: 'client_credential',
+      appid: 'wxda5c90f99a790e95',
+      secret: 'd5d45e96ae56407b450205db08d7c5d5',
+    };
+    network
+      .get(url, query)
+      .then(res => {
+        console.log('res', res);
+      })
+      .catch(err => console.log(err));
+  }
 
   render() {
 
