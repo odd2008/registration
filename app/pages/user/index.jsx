@@ -24,19 +24,23 @@ class Home extends React.Component {
 
   componentDidMount() {
     network
-      .post(`${config.api_host}/wx/getConfig`, {url: global.location.href})
+      .get(`${config.api_host}/wx/getConfig`, {url: global.location.href})
       .then(data => {
         global.wx.config({
-          debug: false,////生产环境需要关闭debug模式
+          debug: true,////生产环境需要关闭debug模式
           appId: data.appId,//appId通过微信服务号后台查看
           timestamp: data.timestamp,//生成签名的时间戳
           nonceStr: data.nonceStr,//生成签名的随机字符串
           signature: data.signature,//签名
           jsApiList: [//需要调用的JS接口列表
             'checkJsApi',//判断当前客户端版本是否支持指定JS接口
-            'onMenuShareTimeline',//分享给好友
-            'onMenuShareAppMessage',//分享到朋友圈
+            'onMenuShareAppMessage',//分享给好友
           ],
+        });
+
+        global.wx.error(function(res){
+          // config信息验证失败会执行error函数，如签名过期导致验证失败，具体错误信息可以打开config的debug模式查看，也可以在返回的res参数中查看，对于SPA可以在这里更新签名。
+          console.log(res);
         });
 
         global.wx.onMenuShareAppMessage({

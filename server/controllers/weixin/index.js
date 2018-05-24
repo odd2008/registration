@@ -14,9 +14,10 @@ module.exports = (req, res, next) => {
   const {url} = req.body;
 
   const timestamp = Date.parse(new Date());
+  const noncestr = uuid();
 
   const data = {
-    nonceStr: uuid(),
+    nonceStr: noncestr,
     timestamp,
     appId: 'wxda5c90f99a790e95',
   };
@@ -34,7 +35,7 @@ module.exports = (req, res, next) => {
 
       const config = {
         jsapi_ticket: ticketObj,
-        noncestr: uuid(),
+        noncestr,
         timestamp,
         url,
       };
