@@ -44,7 +44,7 @@ class Home extends React.Component {
         global.wx.checkJsApi({
 
           jsApiList: ['onMenuShareAppMessage', 'onMenuShareTimeline'], // 需要检测的JS接口列表，所有JS接口列表见附录2,
-          success: function(res) {
+          success: function (res) {
             // 以键值对的形式返回，可用的api值true，不可用为false
             // 如：{"checkResult":{"chooseImage":true},"errMsg":"checkJsApi:ok"}
             console.log('check', res);
@@ -52,7 +52,7 @@ class Home extends React.Component {
 
         });
 
-        global.wx.ready(() => {
+        global.wx.ready(function () {
 
           global.wx.onMenuShareAppMessage({
             title: '用户管理', // 分享标题
@@ -75,7 +75,7 @@ class Home extends React.Component {
             },
           });
 
-          global.wx.error(res => {
+          global.wx.error(function (res) {
             console.log(res);
           });
 
