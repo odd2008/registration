@@ -37,12 +37,13 @@ class Home extends React.Component {
           jsApiList: [//需要调用的JS接口列表
             'checkJsApi',//判断当前客户端版本是否支持指定JS接口
             'onMenuShareAppMessage',//分享给好友
+            'onMenuShareTimeline',//分享到朋友圈
           ],
         });
 
         global.wx.checkJsApi({
 
-          jsApiList: ['onMenuShareAppMessage'], // 需要检测的JS接口列表，所有JS接口列表见附录2,
+          jsApiList: ['onMenuShareAppMessage', 'onMenuShareTimeline'], // 需要检测的JS接口列表，所有JS接口列表见附录2,
           success: function(res) {
             // 以键值对的形式返回，可用的api值true，不可用为false
             // 如：{"checkResult":{"chooseImage":true},"errMsg":"checkJsApi:ok"}
@@ -55,12 +56,22 @@ class Home extends React.Component {
 
           global.wx.onMenuShareAppMessage({
             title: '用户管理', // 分享标题
-            desc: '测试用户管理分享', // 分享描述
+            desc: '朋友分享测试', // 分享描述
             link: global.location.href.split('#')[0], // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
             imgUrl: 'https://www.easyicon.net/api/resizeApi.php?id=556260&size=128', // 分享图标
             type: 'link', // 分享类型,music、video或link，不填默认为link
             success: function () {
-              console.log('// 用户点击了分享后执行的回调函数 user ');
+              console.log('// 用户点击了分享朋友后执行的回调函数');
+            },
+          });
+
+          global.wx.onMenuShareTimeline({
+            title: '用户管理',
+            desc: '朋友圈分享测试',
+            link: global.location.href.split('#')[0],
+            imgUrl: 'https://www.easyicon.net/api/resizeApi.php?id=556260&size=128',
+            success: function () {
+              console.log('// 用户点击了分享朋友圈后执行的回调函数');
             },
           });
 
