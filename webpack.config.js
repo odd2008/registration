@@ -76,7 +76,7 @@ const commonConfig = merge([
   }),
   parts.clean(PATHS.build + '/*.js'),
   parts.clean(PATHS.build + '/*.map'),
- // parts.copy(PATHS.server + '/views/assets', PATHS.build + '/assets'),
+  parts.copy(PATHS.server + '/views/assets', PATHS.build + '/assets'),
 ]);
 
 const productionConfig = merge([
@@ -138,9 +138,9 @@ const developmentConfig = merge([
   },
   parts.generateSourceMaps({type: 'cheap-module-eval-source-map'}),
   /*parts.devServer({
-    host: 'localhost',//process.env.HOST,
-    port: process.env.PORT,
-  }),*/
+   host: 'localhost',//process.env.HOST,
+   port: process.env.PORT,
+   }),*/
   parts.loadCSS(),
   parts.loadImages(),
   parts.extractBundles([
