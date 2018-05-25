@@ -40,15 +40,25 @@ class Home extends React.Component {
           ],
         });
 
+        global.wx.checkJsApi({
+
+          jsApiList: ['onMenuShareAppMessage'], // 需要检测的JS接口列表，所有JS接口列表见附录2,
+          success: function(res) {
+            // 以键值对的形式返回，可用的api值true，不可用为false
+            // 如：{"checkResult":{"chooseImage":true},"errMsg":"checkJsApi:ok"}
+            console.log('check', res);
+          },
+
+        });
+
         global.wx.ready(() => {
 
           global.wx.onMenuShareAppMessage({
             title: '用户管理', // 分享标题
             desc: '测试用户管理分享', // 分享描述
-            link: global.location.href, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+            link: global.location.href.split('#')[0], // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
             imgUrl: 'https://www.easyicon.net/api/resizeApi.php?id=556260&size=128', // 分享图标
-            type: '', // 分享类型,music、video或link，不填默认为link
-            dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+            type: 'link', // 分享类型,music、video或link，不填默认为link
             success: function () {
               console.log('// 用户点击了分享后执行的回调函数 user ');
             },

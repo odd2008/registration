@@ -10,9 +10,9 @@ const GET_TICKET_URL = 'https://api.weixin.qq.com/cgi-bin/ticket/getticket';
 
 module.exports = (req, res, next) => {
 
-  const {url} = req.body;
+  const {url} = req.query;
 
-  const timestamp = Date.parse(new Date());
+  const timestamp = Date.parse(new Date()) / 1000;
   const noncestr = uuid();
 
   const data = {
@@ -40,6 +40,8 @@ module.exports = (req, res, next) => {
         timestamp,
         url,
       };
+
+      console.log(config);
 
       data.signature = sha1(`jsapi_ticket=${config.jsapi_ticket}&noncestr=${config.noncestr}&timestamp=${config.timestamp}&url=${config.url}`);
       res.json(data);
