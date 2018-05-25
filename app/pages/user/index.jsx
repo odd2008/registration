@@ -29,7 +29,7 @@ class Home extends React.Component {
       .then(data => {
 
         global.wx.config({
-          debug: true,////生产环境需要关闭debug模式
+          debug: config.debug,////生产环境需要关闭debug模式
           appId: data.appId,//appId通过微信服务号后台查看
           timestamp: data.timestamp,//生成签名的时间戳
           nonceStr: data.nonceStr,//生成签名的随机字符串
@@ -58,7 +58,7 @@ class Home extends React.Component {
             title: '用户管理', // 分享标题
             desc: '朋友分享测试', // 分享描述
             link: global.location.href.split('#')[0], // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
-            imgUrl: 'https://www.easyicon.net/api/resizeApi.php?id=556260&size=128', // 分享图标
+            imgUrl: 'http://songzhongkun.com/program_ape.jpg', // 分享图标
             type: 'link', // 分享类型,music、video或link，不填默认为link
             success: function () {
               console.log('// 用户点击了分享朋友后执行的回调函数');

@@ -5,6 +5,7 @@ let host = process.env.HOST.replace(/(https)(:\/\/.*)/g,(str,$1,$2) => {
 });
 
 const config = {
+  debug: false,
   api_host: `${host}${process.env.API_PORT != 80 ? `:${process.env.API_PORT}` : ''}/api`,
   prefix: {
     oss: '//goss.vcg.com/',
