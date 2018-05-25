@@ -83,7 +83,11 @@ app.use(ssr);
 app.use('/api',api);
 
 app.get('/MP_verify_sLRBKMI2XAcvShdG.txt', function (req, res) {
-  res.sendFile(__dirname + "/" + "MP_verify_sLRBKMI2XAcvShdG.txt");
+  res.sendFile(path.resolve(__dirname, 'MP_verify_sLRBKMI2XAcvShdG.txt'));
+});
+
+app.get('/program_ape.jpg', function (req, res) {
+  res.sendFile(path.resolve(__dirname, 'program_ape.jpg'));
 });
 
 // spicify the public folder
