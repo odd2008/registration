@@ -5,8 +5,7 @@ import {network} from 'utils';
 import uuid from 'uuid/v4';
 import sha1 from 'sha1';
 
-const GET_ACCESS_TOKEN_URL = 'https://api.weixin.qq.com/cgi-bin/token';
-const GET_TICKET_URL = 'https://api.weixin.qq.com/cgi-bin/ticket/getticket';
+const basic = require('../../config/basic');
 
 module.exports = (req, res, next) => {
 
@@ -18,20 +17,20 @@ module.exports = (req, res, next) => {
   const data = {
     nonceStr: noncestr,
     timestamp,
-    appId: 'wxda5c90f99a790e95',
+    appId: basic.appID,
   };
 
   const token_query = {
-    grant_type: 'client_credential',
-    appid: 'wxda5c90f99a790e95',
-    secret: 'd5d45e96ae56407b450205db08d7c5d5',
+    grant_type: basic.grant_type,
+    appid: basic.appID,
+    secret: basic.appsecret,
   };
 
-  const ticker_query = {type: 'jsapi'};
+  const ticker_query = {type: basic.type};
 
   network
-    .get(GET_ACCESS_TOKEN_URL, token_query)
-    .then(tokenObj => network.get(GET_TICKET_URL, {...ticker_query, access_token: tokenObj.access_token}))
+    .get(basic.getTokenUrl, token_query)
+    .then(tokenObj => network.get(basic.getTicketUrl, {...ticker_query, access_token: tokenObj.access_token}))
     .then(ticketObj => {
 
       const config = {
