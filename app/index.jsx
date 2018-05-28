@@ -38,12 +38,6 @@ const styles = theme => {
         fontFamily: '"Helvetica Neue For Number", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif;',
       },
 
-      '#root': {
-        [theme.breakpoints.down('xs')]: {
-          paddingRight: 0,
-        },
-      },
-
       '.maxContent': {
         maxWidth: 1200,
         margin: '0 auto',

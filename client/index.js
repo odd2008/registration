@@ -19,8 +19,8 @@ import {BrowserRouter} from 'react-router-dom';
 import createHistory from 'history/createBrowserHistory';
 import {routerMiddleware} from 'react-router-redux';
 
-import {MuiThemeProvider, createMuiTheme} from 'material-ui/styles';
-import CssBaseline from 'material-ui/CssBaseline';
+import {MuiThemeProvider, createMuiTheme} from '@material-ui/core/styles';
+import CssBaseline from '@material-ui/core/CssBaseline';
 import moment from 'moment';
 import theme from 'theme';
 import routes from 'app/routes';

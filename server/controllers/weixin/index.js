@@ -40,7 +40,7 @@ module.exports = (req, res, next) => {
         url,
       };
 
-      console.log(config);
+      // console.log(config);
 
       data.signature = sha1(`jsapi_ticket=${config.jsapi_ticket}&noncestr=${config.noncestr}&timestamp=${config.timestamp}&url=${config.url}`);
       res.json(data);
