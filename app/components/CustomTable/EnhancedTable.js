@@ -6,6 +6,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {withStyles} from '@material-ui/core/styles';
+import {withRouter} from 'react-router-dom';
+import qs from 'qs';
+
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -35,6 +38,13 @@ const styles = theme => ({
 });
 
 class EnhancedTable extends React.Component {
+
+  static defaultProps = {
+    order: 'asc',
+    orderBy: 'calories',
+    onChangePage: page => console.log('未传入回调函数，page: ' + page),
+    onChangeRowsPerPage: perPage => console.log('未传入回调函数，rowsperpage: ' + perPage),
+  };
 
   constructor(props, context) {
     super(props, context);
@@ -94,19 +104,23 @@ class EnhancedTable extends React.Component {
   };
 
   handleChangePage = (event, page) => {
-    this.setState({page});
+    this.props.onChangePage(page + 1);
   };
 
   handleChangeRowsPerPage = event => {
-    this.setState({rowsPerPage: event.target.value});
+    this.props.onChangeRowsPerPage(event.target.value);
   };
 
   isSelected = id => this.state.selected.indexOf(id) !== -1;
 
   render() {
-    const {classes, columnData, dataSource} = this.props;
-    const {order, orderBy, selected, rowsPerPage, page} = this.state;
-    const emptyRows = rowsPerPage - Math.min(rowsPerPage, dataSource.length - page * rowsPerPage);
+
+    const {classes, location, columnData, dataSource, total} = this.props;
+    const {order, orderBy, selected} = this.state;
+
+    let {page = 1, perPage = 10} = qs.parse(location.search, {ignoreQueryPrefix: true});
+    page--;
+    const emptyRows = perPage - dataSource.length;
 
     return (
       <Paper className={classes.root}>
@@ -126,7 +140,7 @@ class EnhancedTable extends React.Component {
             />
             <TableBody>
               {
-                dataSource.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map(n => {
+                dataSource.map(n => {
                   const isSelected = this.isSelected(n.id);
                   return (
                     <TableRow
@@ -165,8 +179,8 @@ class EnhancedTable extends React.Component {
 
         <TablePagination
           component="div"
-          count={dataSource.length}
-          rowsPerPage={rowsPerPage}
+          count={total}
+          rowsPerPage={parseInt(perPage)}
           page={page}
           backIconButtonProps={{
             'aria-label': 'Previous Page',
@@ -181,12 +195,19 @@ class EnhancedTable extends React.Component {
       </Paper>
     );
   }
+
 }
 
 EnhancedTable.propTypes = {
   classes: PropTypes.object.isRequired,
+  location: PropTypes.object.isRequired,
   columnData: PropTypes.array.isRequired,
   dataSource: PropTypes.array.isRequired,
+  total: PropTypes.number.isRequired,
+  order: PropTypes.string,
+  orderBy: PropTypes.string,
+  onChangePage: PropTypes.func,
+  onChangeRowsPerPage: PropTypes.func,
 };
 
-export default withStyles(styles)(EnhancedTable);
+export default withStyles(styles)(withRouter(EnhancedTable));
