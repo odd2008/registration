@@ -21,7 +21,7 @@ const styles = theme => ({
 
 });
 
-class Home extends React.Component {
+class Doctor extends React.Component {
 
   render() {
 
@@ -47,7 +47,7 @@ class Home extends React.Component {
   }
 }
 
-Home.propTypes = {
+Doctor.propTypes = {
   //style
   classes: PropTypes.object.isRequired,
   history: PropTypes.object.isRequired,
@@ -60,4 +60,4 @@ const mapDispatchToProps = {};
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(withStyles(styles)(withRouter(Home)));
+)(withStyles(styles)(withRouter(Doctor)));

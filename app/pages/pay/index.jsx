@@ -10,29 +10,29 @@ import Typography from '@material-ui/core/Typography';
 
 const styles = () => ({
 
-  root: {
+  _root: {
     textAlign: 'center',
   },
 
 });
 
-class Home extends React.Component {
+class Pay extends React.Component {
 
   render() {
 
     const {classes} = this.props;
 
     return (
-      <div className={classes.root}>
+      <div className={classes._root}>
         <Typography noWrap>
-          {'Welcome come to my home!'}
+          {'Welcome come to pay list !!!'}
         </Typography>
       </div>
     );
   }
 }
 
-Home.propTypes = {
+Pay.propTypes = {
   //style
   classes: PropTypes.object.isRequired,
 };
@@ -44,4 +44,4 @@ const mapDispatchToProps = {};
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(withStyles(styles)(withRouter(Home)));
+)(withStyles(styles)(withRouter(Pay)));

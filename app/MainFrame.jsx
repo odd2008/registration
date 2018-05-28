@@ -16,13 +16,17 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import Divider from '@material-ui/core/Divider';
 import InboxIcon from '@material-ui/icons/Inbox';
-import DraftsIcon from '@material-ui/icons/Drafts';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import Hidden from '@material-ui/core/Hidden';
 import MenuIcon from '@material-ui/icons/Menu';
 
 const drawerWidth = 240;
+
+const menuList = [
+  {label: '患者资料管理', value: 'patient'},
+  {label: '支付管理', value: 'pay'},
+];
 
 const styles = theme => ({
 
@@ -77,10 +81,13 @@ const styles = theme => ({
 
 class MainFrame extends React.Component {
 
-  state = {
-    mobileOpen: false,
-    menuName: '用户管理',
-  };
+  constructor(props){
+    super(props);
+    this.state = {
+      mobileOpen: false,
+      menuName: '用户管理',
+    };
+  }
 
   handleDrawerToggle = () => {
     this.setState({mobileOpen: !this.state.mobileOpen});
@@ -105,25 +112,22 @@ class MainFrame extends React.Component {
     const drawer = (
       <div>
 
-        <div className={classes.appName}>挂号加速器</div>
+        <div className={classes.appName}>薄荷牙医</div>
 
         <Divider />
 
         <List>
 
-          <ListItem button onClick={() => this.toggleSubMenu('用户管理', 'user')}>
-            <ListItemIcon>
-              <InboxIcon />
-            </ListItemIcon>
-            <ListItemText primary="用户管理" />
-          </ListItem>
-
-          <ListItem button onClick={() => this.toggleSubMenu('医生管理', 'doctor')}>
-            <ListItemIcon>
-              <DraftsIcon />
-            </ListItemIcon>
-            <ListItemText primary="医生管理" />
-          </ListItem>
+          {
+            menuList.map(menu => (
+              <ListItem key={menu.value} button onClick={() => this.toggleSubMenu(menu.label, menu.value)}>
+                <ListItemIcon>
+                  <InboxIcon />
+                </ListItemIcon>
+                <ListItemText primary={menu.label} />
+              </ListItem>
+            ))
+          }
 
         </List>
 

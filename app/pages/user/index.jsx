@@ -20,7 +20,7 @@ const styles = () => ({
 
 });
 
-class Home extends React.Component {
+class User extends React.Component {
 
   componentDidMount() {
 
@@ -120,7 +120,7 @@ class Home extends React.Component {
   }
 }
 
-Home.propTypes = {
+User.propTypes = {
   //style
   classes: PropTypes.object.isRequired,
 };
@@ -132,4 +132,4 @@ const mapDispatchToProps = {};
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(withStyles(styles)(withRouter(Home)));
+)(withStyles(styles)(withRouter(User)));
