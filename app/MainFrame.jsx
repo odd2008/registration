@@ -85,7 +85,7 @@ class MainFrame extends React.Component {
     super(props);
     this.state = {
       mobileOpen: false,
-      menuName: '用户管理',
+      menuName: '患者资料管理',
     };
   }
 
