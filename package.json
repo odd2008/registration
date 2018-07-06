@@ -50,6 +50,7 @@
     "helmet": "^3.4.0",
     "history": "^4.7.2",
     "immutability-helper": "^2.4.0",
+    "immutable": "^3.8.2",
     "ioredis": "^3.2.2",
     "isomorphic-fetch": "^2.2.1",
     "lodash": "^4.17.4",

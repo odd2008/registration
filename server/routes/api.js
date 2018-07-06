@@ -20,6 +20,8 @@ router.post('/addDoctor', controllers.doctor.addDoctor);
 router.post('/getDoctors', controllers.doctor.getDoctors);
 router.get('/wx/getConfig', controllers.weixin.index);
 router.get('/wx/token', controllers.weixin.token);
+router.get('/sm/number', controllers.sm.index);
+router.post('/sm/confirm', controllers.sm.confirm);
 
 router.get('/patient', controllers.patient.index);
 

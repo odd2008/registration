@@ -16,10 +16,6 @@
       "webpackRequireWeakId" : true
     }],
 
-    //"syntax-dynamic-import",
-    //"dynamic-import-webpack",
-    //"dynamic-import-node",
-
     ["system-import-transformer", { "commonJS": { "useRequireEnsure": true} }],
     "react-loadable/babel",
 

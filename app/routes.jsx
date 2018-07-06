@@ -24,6 +24,11 @@ const Login = Loadable({
   loading,
 });
 
+const Number = Loadable({
+  loader : () => import( /* webpackChunkName: 'home' */ './pages/sm/WorkNumber'),
+  loading,
+});
+
 const User = Loadable({
   loader : () => import( /* webpackChunkName: 'home' */ './pages/user'),
   loading,
@@ -58,6 +63,11 @@ const routes = [
         path: '/login',
         exact : true,
         component: Login,
+      },
+      {
+        path: '/number',
+        exact : true,
+        component: Number,
       },
       {
         component: MainFrame,
