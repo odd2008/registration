@@ -44,14 +44,27 @@ export function fetchNumber() {
   };
 }
 
+export const CONFIRM_NUMBER_SUCCESS = `${prefix}.CONFIRM_NUMBER_SUCCESS`;
+export const CONFIRM_NUMBER_FAILURE = `${prefix}.CONFIRM_NUMBER_FAILURE`;
+
+function confirmNumberSuccess(data) {
+  return {
+    type: CONFIRM_NUMBER_SUCCESS,
+    payload: data,
+  };
+}
+
+function confirmNumberFailure(err) {
+  return {
+    type: CONFIRM_NUMBER_FAILURE,
+    payload: err,
+  };
+}
+
 export function confirmNumber(params) {
   return dispatch => {
     return network.post(`${config.api_host}/sm/confirm`, params)
-      .then(res => {
-        console.log(res);
-      })
-      .catch(err => {
-        console.log(err);
-      });
+      .then(data => dispatch(confirmNumberSuccess(data)))
+      .catch(err => dispatch(confirmNumberFailure(err)));
   };
 }
